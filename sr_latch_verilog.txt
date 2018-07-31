@@ -1,0 +1,29 @@
+////module
+
+module sr(r,s,q,qb);
+  input r,s;
+  output q,qb;
+  nor n1(q,r,qb);
+  nor n2(qb,s,q);
+endmodule
+
+
+////testbench
+
+
+module testbench();
+  reg r1,s1;
+  wire q1,qb1;
+  sr sr1(r1,s1,q1,qb1);
+  initial
+    begin
+      r1=1'b1;
+      s1=1'b0;
+    #1 $display("q=%b",q1);
+      $display("qb=%b",qb1);
+      r1=1'b0;
+      s1=1'b1;
+    $display("qb=%b",qb1);
+      $display("q=%b",q1);
+  end
+endmodule
